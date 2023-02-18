@@ -13,21 +13,21 @@ import forca6 from "./assets/forca6.png";
 
 export default function App() {
   const imagens = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
-  const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   const[imagem,setImagem] = useState(imagens[0]);
-  const[letras,setLetras] = useState("disabled");
   const[palavra,setPalavra] = useState("");
   const[inicio, setInicio] = useState(false);
   const[palavraExibida,setPalavraExibida] = useState([]);
+  const[status, setStatus] = useState("");
   console.log(palavra);
 
   return (
     <div>
-      <Jogo key={palavras} palavras={palavras} imagem={imagem} palavra={palavra}
+      <Jogo key={palavras} palavras={palavras} imagem={imagem} palavra={palavra} inicio={inicio}
       setPalavra={setPalavra} setInicio={setInicio} setPalavraExibida={setPalavraExibida}
-      palavraExibida={palavraExibida}/>
-      <Letras key={alfabeto} alfabeto={alfabeto} imagem={imagem} setImagem={setImagem} letras={letras} setLetras={setLetras}
-      palavra={palavra} setPalavra={setPalavra} inicio={inicio} setInicio={setInicio} />
+      palavraExibida={palavraExibida} status={status} setStatus={setStatus} setImagem={setImagem} imagens={imagens}/>
+      <Letras key={palavra} imagem={imagem} setImagem={setImagem} imagens={imagens}
+      palavra={palavra} setPalavra={setPalavra} inicio={inicio} setInicio={setInicio} setStatus={setStatus}
+      setPalavraExibida={setPalavraExibida} palavraExibida={palavraExibida}  />
     </div>
   );
 }

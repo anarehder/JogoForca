@@ -1,23 +1,21 @@
-
 export default function Jogo(props){
-    let palavras = props.palavras;
+    const ac = "acertou";
+    const er = "errou";
 
     function escolherPalavra(){
-        if (props.palavra === "") {
-            const indice = Math.floor(Math.random() * palavras.length);
-            props.setPalavra(palavras[indice]);
+        if (props.palavra === "" || props.status === ac || props.status === er) {
+            const indice = Math.floor(Math.random() * props.palavras.length);
+            props.setPalavra(props.palavras[indice]);
             props.setInicio(!props.inicio);
             const palavraVazia = [];
-            for(let i=0; i<palavras[indice].length; i++){
+            for(let i=0; i<props.palavras[indice].length; i++){
                 palavraVazia.push("_");
             }
-            props.setPalavraExibida(palavraVazia.join(" "))
+            props.setPalavraExibida(palavraVazia.join(" "));
+            props.setStatus("");
+            props.setImagem(props.imagens[0])
         }
     }
-
- /*    const palavraSelecionada = props.palavra;
-    const palavraVazia = []; */
-    
 
     return(
         <div className="jogo">
@@ -26,8 +24,10 @@ export default function Jogo(props){
             </div>
             <div className="esquerda">
                 <button onClick={escolherPalavra} data-test="choose-word"> Escolher Palavra </button>
-                <div data-test="word">{props.palavraExibida}</div>
+                <div className={`${props.status === ac ? ac : props.status === er ? er : ""}`}
+                data-test="word">{props.palavraExibida}</div>
             </div>
         </div>
     )
 }
+// quando o props.status = "acertou" coloco a className="acertou" se for "errou" coloc className="errou"
