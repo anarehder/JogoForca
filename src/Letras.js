@@ -1,32 +1,8 @@
-export default function Letras(){
+export default function Letras(props){
+/*     let erros = 0; */
     return(
         <div className="letras">
-            <button> A </button>
-            <button disabled> B </button>
-            <button disabled> C </button>
-            <button> D </button>
-            <button> E </button>
-            <button> F </button>
-            <button> A </button>
-            <button> B </button>
-            <button> C </button>
-            <button> D </button>
-            <button> E </button>
-            <button> F </button>
-            <button> A </button>
-            <button> B </button>
-            <button> C </button>
-            <button> D </button>
-            <button> E </button>
-            <button> F </button>
-            <button> A </button>
-            <button> B </button>
-            <button> C </button>
-            <button> D </button>
-            <button> E </button>
-            <button> F </button>
-            <button> E </button>
-            <button> F </button>
+            {props.alfabeto.map((letra) => <button disabled={props.inicio === false ? true : ""} key={letra} data-test="letter">{letra.toUpperCase()}</button>)};
         </div>
     )
 }

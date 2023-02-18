@@ -1,14 +1,29 @@
-import forca1 from './assets/forca1.png';
 
-export default function Jogo(){
+export default function Jogo(props){
+    let palavras = props.palavras;
+
+    function escolherPalavra(){
+        if (props.palavra === "") {
+        const indice = Math.floor(Math.random() * palavras.length);
+        props.setPalavra(palavras[indice]);
+        props.setInicio(!props.inicio);
+        }
+    }
+
+    const palavraSelecionada = props.palavra;
+    const palavraVazia = [];
+    for(let i=0; i<palavraSelecionada.length; i++){
+        palavraVazia.push("_");
+    }
+
     return(
         <div className="jogo">
             <div>
-                <img src={forca1} alt="forca1" />
+                <img src={props.imagem} alt="forca" data-test="game-image"/>
             </div>
             <div className="esquerda">
-                <button> Escolher Palavra</button>
-                <div>_ _ _ _ _ _ _ _ _ _</div>
+                <button onClick={escolherPalavra} data-test="choose-word"> Escolher Palavra </button>
+                <div data-test="word">{palavraVazia.join(" ")}</div>
             </div>
         </div>
     )
