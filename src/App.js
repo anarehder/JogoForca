@@ -18,15 +18,16 @@ export default function App() {
   const[letras,setLetras] = useState("disabled");
   const[palavra,setPalavra] = useState("");
   const[inicio, setInicio] = useState(false);
-  const[tracos,setTracos] = useState([]);
+  const[palavraExibida,setPalavraExibida] = useState([]);
   console.log(palavra);
 
   return (
     <div>
       <Jogo key={palavras} palavras={palavras} imagem={imagem} palavra={palavra}
-      setPalavra={setPalavra} setInicio={setInicio} tracos={tracos} setTracos={setTracos}/>
+      setPalavra={setPalavra} setInicio={setInicio} setPalavraExibida={setPalavraExibida}
+      palavraExibida={palavraExibida}/>
       <Letras key={alfabeto} alfabeto={alfabeto} imagem={imagem} setImagem={setImagem} letras={letras} setLetras={setLetras}
-      palavra={palavra} setPalavra={setPalavra} inicio={inicio} setInicio={setInicio}/>
+      palavra={palavra} setPalavra={setPalavra} inicio={inicio} setInicio={setInicio} />
     </div>
   );
 }
