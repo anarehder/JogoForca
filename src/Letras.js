@@ -13,7 +13,6 @@ export default function Letras(props){
             for (let i=0 ; i<props.palavra.length; i++){
                 if (props.palavra[i] === letra){
                     palavraTeste.push(letra);
-
                 }else{
                     palavraTeste.push(props.palavraExibida[2*i]);
                 }
@@ -24,6 +23,7 @@ export default function Letras(props){
                 props.setInicio(false);
                 props.setStatus("acertou");
                 setErro(0);
+                props.setPalavraExibida(props.palavra);
             }
         } else {
             setErro(erro+1);

@@ -3,10 +3,10 @@ export default function Jogo(props){
     const er = "errou";
 
     function escolherPalavra(){
-        if (props.palavra === "" || props.status === ac || props.status === er) {
-            const indice = Math.floor(Math.random() * props.palavras.length);
+        const indice = Math.floor(Math.random() * props.palavras.length);
             props.setPalavra(props.palavras[indice]);
-            props.setInicio(!props.inicio);
+            /* props.setInicio(!props.inicio); */
+            props.setInicio(true);
             const palavraVazia = [];
             for(let i=0; i<props.palavras[indice].length; i++){
                 palavraVazia.push("_");
@@ -14,7 +14,9 @@ export default function Jogo(props){
             props.setPalavraExibida(palavraVazia.join(" "));
             props.setStatus("");
             props.setImagem(props.imagens[0])
-        }
+        /* if (props.palavra === "" || props.status === ac || props.status === er) {
+            
+        } */
     }
 
     return(
