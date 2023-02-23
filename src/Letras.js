@@ -1,13 +1,11 @@
 import { useState } from "react";
 export default function Letras(props){
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    const[letraSelecionada,setLetraSelecionada] = useState([]);
     const[erro,setErro] = useState(0);
     let palavraTeste = [];
 
-
     function SelecionaLetra(letra){
-        setLetraSelecionada([...letraSelecionada,letra]);
+        props.setLetraSelecionada([...props.letraSelecionada,letra]);
         // se a letra selecionada tiver na palavra guardo o index dela em um array
         if (props.palavra.includes(letra)){
             for (let i=0 ; i<props.palavra.length; i++){
@@ -44,7 +42,7 @@ export default function Letras(props){
     return(
         <div className="letras">
             {alfabeto.map((letra) => <button onClick={() => SelecionaLetra(letra)} 
-            disabled={props.inicio === false || letraSelecionada.includes(letra) ? true : ""}
+            disabled={props.inicio === false || props.letraSelecionada.includes(letra) ? true : ""}
             key={letra} 
             data-test="letter">{letra.toUpperCase()}</button>)}
         </div>

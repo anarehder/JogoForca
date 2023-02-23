@@ -5,7 +5,7 @@ export default function Jogo(props){
     function escolherPalavra(){
         const indice = Math.floor(Math.random() * props.palavras.length);
             props.setPalavra(props.palavras[indice]);
-            /* props.setInicio(!props.inicio); */
+            props.setLetraSelecionada([]);
             props.setInicio(true);
             const palavraVazia = [];
             for(let i=0; i<props.palavras[indice].length; i++){
@@ -13,10 +13,7 @@ export default function Jogo(props){
             }
             props.setPalavraExibida(palavraVazia.join(" "));
             props.setStatus("");
-            props.setImagem(props.imagens[0])
-        /* if (props.palavra === "" || props.status === ac || props.status === er) {
-            
-        } */
+            props.setImagem(props.imagens[0]);
     }
 
     return(
@@ -32,4 +29,3 @@ export default function Jogo(props){
         </div>
     )
 }
-// quando o props.status = "acertou" coloco a className="acertou" se for "errou" coloc className="errou"
